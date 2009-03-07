@@ -1,0 +1,33 @@
+!!! Strict
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title= slide_show_title
+    %meta{ :name => "version", :content => "S5 1.0" }
+    %link#slideProj{ :href => "slides.css", :rel => "stylesheet", :media => "projection", :type => "text/css" }
+    %link#outlineStyle{ :href => "ui/outline.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
+    %link#operaFix{ :href => "ui/opera.css", :rel => "stylesheet", :media => "projection", :type => "text/css" }
+    %link#slidePrint{ :href => "ui/print.css", :rel => "stylesheet", :media => "print", :type => "text/css" }
+
+    %style{ :type => "text/css", :media => "all" }
+      \.imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+      \#anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+      \#anim img {position: absolute; top: 42px; left: 24px;}
+      img#me01 {top: 0; left: 0;}
+      img#me02 {left: 23px;}
+      img#me04 {top: 44px;}
+      img#me05 {top: 43px;left: 36px;}
+
+    %script{ :src => "/slides.js", :type => "text/javascript" }
+  %body
+    .layout
+      #controls
+      #currentSlide
+      #header
+      #footer
+        %h1
+          = slide_show_title
+        %h2
+          Developer's Lunch &#8226;
+          = Time.now.strftime('%Y-%m-%d')
+    .presentation
+      =yield

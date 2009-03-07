@@ -1,0 +1,6 @@
+.slide
+  %h1= slide.title
+  %ul
+    -slide.points.each do |point|
+      %li= point
+  .handout= slide.handout_material
