@@ -5,7 +5,8 @@ require 'lib/base'
 set :logging, true
 set :app_file, __FILE__
 
-configure do
+configure(:development) do
+  set :slides, 'lib/slides'
 end
 
 helpers do
@@ -46,10 +47,9 @@ def gist(id)
   "%script{:src => 'http://gist.github.com/#{id}.js', :type => 'text/javascript' }"
 end
 
-
 get '/' do
   begin
-    SlideStore.instance.load_slides 'lib/slides'
+    SlideStore.instance.load_slides options.slides
   rescue
     Slide.new(:title => $!.message, :points => ['advance slide for stacktrace'])
     Slide.new(:title => 'stacktrace', :points => $@)

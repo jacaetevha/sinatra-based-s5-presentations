@@ -1,0 +1,13 @@
+= SinBaSP (Sinatra Based S5 Presentations)
+
+This is a minimal HTML based presentation tool running on Sinatra, using the S5 library from Eric Meyer (http://meyerweb.com/eric/tools/s5/).
+
+== Sample App
+
+Look at the <tt>lib/slides.rb</tt> for an example of how to use this.
+
+Run with <tt>ruby myapp.rb</tt> and view at <tt>http://localhost:4567</tt>
+
+== Dependencies
+Sinatra >= 0.9.0
+HAML >= 2.0.3 (older versions may work, but I haven't tried 'em)

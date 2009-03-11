@@ -1,26 +1,17 @@
-Slide.main_title = "Quick 'n' Clean REST via Sinatra"
+Slide.main_title = "S5 meets Sinatra"
 
 Slide.new(:title => %q{
 %h1
-  Sinatra
-  %h3
-    Micro-Framework for the Web
+  Sinatra-based S5 Presentations
 })
 
-Slide.new(:title => 'The Basics', :points => [
+Slide.new(:title => 'Points', :points => "Points can be plain text")
+
+Slide.new(:title => 'Points can be a list of plain text', :points => [
   'Sweet', 'Simple', '... and to the Point'
 ])
 
-Slide.new(:title => 'Get outta my face', :points => [
-  'Minimal layer over HTTP',  'Handles it', 'Gets out of your way'
-])
-
-Slide.new(:title => 'exploiting the simplicity of HTTP', :points => [
-  'GET', 'POST', 'PUT', 'DELETE'
-])
-
-Slide.new(:title => 'exploiting the simplicity of HTTP', :points => [
-  %q{
+Slide.new(:title => 'Points can be HAML', :points => %q{
 %p
   %strong
     get
@@ -53,29 +44,13 @@ Slide.new(:title => 'exploiting the simplicity of HTTP', :points => [
   \...
   %br
   end
-}
+})
+
+Slide.new(:title => "%i\n  Titles can be HAML", :points => "The title of this screen should be in\n%i\n  italics")
+
+Slide.new(:title => 'Gists are supported', :points => gist(75985))
+
+Slide.new(:title => "more information", :points => [
+  "%a{:href=>'http://www.sinatrarb.com/'}\n  Sinatra",
+  "%a{:href=>'http://meyerweb.com/eric/tools/s5/'}\n  Eric Meyer's S5",
 ])
-
-Slide.new(:title => 'Simple Routing', :points => gist(77286))
-
-Slide.new(:title => 'Parameterized Routing', :points => gist(77291))
-
-Slide.new(:title => 'Parameterized Routing', :points => gist(77294))
-
-Slide.new(:title => 'Programmatic Routing', :points => gist(77268))
-
-Slide.new(:title => 'Resource Formats', :points => gist(77299))
-
-Slide.new(:title => 'So much for GET, what about the others?', :points => [
-  'POST, PUT, DELETE', 'Sinatra\'s got \'em, so why not use \'em',
-  'Sinatra will read the headers or look for a special "_method" parameter',
-  'Purists say "It MUST be in the HEADER"',
-  'Pragamatists say "Who cares? Do what\'s easiest and most common"'
-])
-
-Slide.new(:title => "Getting Classy", :points => ["sudo get install sinatra",
-  "(ruby|jruby) -rubygems app.rb", "Sinatra will look for a Rack compatible web-server and use it",
-  "go to http://localhost:4567"
-])
-
-Slide.new(:title => "Uh Oh! No No! -- Live Demo")
