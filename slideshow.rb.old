@@ -1,0 +1,85 @@
+require 'sinatra'
+require 'lib/presentations'
+require 'lib/extensions'
+require 'vendor/sinatras-hat/sinatras-hat'
+
+class Slideshow < Sinatra::Base
+  # set :static, true
+  set :logging, true
+  set :app_file, __FILE__
+  
+  configure do
+    load 'lib/presentations.rb'
+  end
+
+    def slide_show_title
+      "Quick 'n' Dirty REST via Sinatra"
+    end
+  
+    def base_url(scheme='http://')
+      url = "#{scheme}#{Sinatra::Application.host}"
+      url += ":#{Sinatra::Application.port}" unless Sinatra::Application.port.to_s == '80'
+      url
+    end
+  
+    def url_for_presentation(p, scheme='http://')
+      "#{base_url(scheme)}/presentations/#{p.id}"
+    end
+
+    def partial(template, *args)
+      options = args.extract_options!
+      options.merge!(:layout => false)
+      if collection = options.delete(:collection) then
+        collection.inject([]) do |buffer, member|
+          buffer << haml(template, options.merge(:layout => false, :locals => {template.to_sym => member}))
+        end.join("\n")
+      else
+        haml(template, options)
+      end
+    end
+
+  get '/' do
+    # @presentations = Presentation.all
+    # haml :presentations, :layout => :presentation_layout
+    redirect '/presentations'
+  end
+
+  mount Presentation do
+    finder { |model, params| Presentation.all }
+    record { |model, params| model[:id => params[:id]] }
+    model_attributes { |model| model.values }
+    rendering_engine :haml
+    
+    mount Slide do
+      finder { |model, params| Slide.filter(:presentation_id => params[:presentation_id]).all }
+      record { |model, params| model[:id => params[:id]] }
+      model_attributes { |model| model.values }
+      rendering_engine :haml
+    end
+  end
+  
+  # 
+  # put '/presentations' do
+  #   @presentation.save
+  #   redirect_to "/presentations/#{@presentation.id}"
+  # end
+  # 
+  # get '/presentations/new' do
+  #   @presentation = Presentation.new
+  #   haml :new_presentation, :layout => :presentation_layout
+  # end
+  # 
+  # get '/presentations/:id' do
+  #   @presentation = Presentation[params['id']]
+  #   haml :presentation, :layout => :slideshow_layout
+  # end
+
+  %w{framing opera outline pretty print s5-core slides}.each do |style|
+    get "/ui/#{style}.css" do
+      header 'Content-Type' => 'text/css; charset=utf-8'
+      sass style.to_sym
+    end
+  end
+end
+
+Slideshow.run! if __FILE__ == $0
