@@ -1,9 +1,0 @@
--@presentations.each do |p|
-  %p.presentation[p]{:style => 'border: 1px #ddd solid; padding: 2em; width: 10%; text-align: center;'}
-    %a{:href => url_for_presentation(p)}
-      %span.title
-        = p.title
-%br/
-.create
-  %a{:href => '/presentations/new'}
-    Create Presentation
