@@ -7,10 +7,6 @@ Slide.new(:title => %q{
     Micro-Framework for the Web
 })
 
-http_color = '#d8f2e3'
-sinatra_color = '#dceaff'
-border_color = '#666666'
-
 Slide.new(:title => 'The Basics', :points => [
   'Sweet', 'Simple', '... and to the Point'
 ])
