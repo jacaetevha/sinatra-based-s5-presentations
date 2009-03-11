@@ -11,3 +11,7 @@ Run with <tt>ruby slideshow.rb</tt> and view at <tt>http://localhost:4567</tt>
 == Dependencies
 Sinatra >= 0.9.0
 HAML >= 2.0.3 (older versions may work, but I haven't tried 'em)
+
+== To Do
+- Support use of ERb
+- Make styles more easily configurable so that the we don't have to edit the templates as much
