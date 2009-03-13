@@ -1,0 +1,7 @@
+== 0.1.2
+- added gemspec and Rakefile (most of which was copied from Sinatra's codebase)
+
+== 0.1.1
+- added RSpec specifications
+- added support for ERb templating
+- added support for instance variables in templates

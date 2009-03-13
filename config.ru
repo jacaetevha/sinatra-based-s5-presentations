@@ -12,8 +12,4 @@ set :views, File.join(File.dirname(__FILE__), 'views')
 # we're in dev mode
 set :environment, :development
  
-# Mount our Main class with a base url of /
-map "/" do
-  run Sinatra::Application
-  # run Slideshow
-end
+run Sinatra::Application

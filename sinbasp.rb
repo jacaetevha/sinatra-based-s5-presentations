@@ -31,9 +31,6 @@ helpers do
     options.merge!(:layout => false)
     if collection = options.delete(:collection) then
       collection.inject([]) do |buffer, member|
-        puts "\n\n#{template.inspect}\n\n"
-        puts "\n\n#{args.inspect}\n\n"
-        puts "\n\n#{collection.inspect}\n\n"
         buffer << self.send(Slide.engine, template, options.merge(:layout => false, :locals => {template.to_sym => member}))
         # buffer << haml(template, options.merge(:layout => false, template.to_sym => member))
       end.join("\n")

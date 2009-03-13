@@ -7,12 +7,12 @@ This is a minimal HTML based presentation tool running on Sinatra, using the S5 
 Look at the <tt>lib/slides.rb</tt> for an example of how to use this.
 
 Run with (viewable at http://localhost:4567):
-  ruby slideshow.rb
+  ruby sinbasp.rb
 
 To run with ERb you need to set an environment variable called <tt>sinbasp_engine</tt> and set it to <tt>erb</tt>.
 
 In BASH, you can run this command to start up the script and set it to run with ERb:
-  sinbasp_engine=erb ruby slideshow.rb
+  sinbasp_engine=erb ruby sinbasp.rb
 
 == Dependencies
 - Sinatra >= 0.9.0
