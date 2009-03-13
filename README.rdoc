@@ -8,8 +8,14 @@ Look at the <tt>lib/slides.rb</tt> for an example of how to use this.
 
 Run with <tt>ruby slideshow.rb</tt> and view at <tt>http://localhost:4567</tt>
 
+To run with ERb you need to set an environment variable called <tt>sinbasp_engine</tt> and set it to <tt>erb</tt>.
+
+In BASH, you can run this command to start up the script and set it to run with ERb:
+  <tt>sinbasp_engine=erb ruby slideshow.rb</tt>
+
 == Dependencies
 - Sinatra >= 0.9.0
 
 == To Do
 - Make styles more easily configurable so that the we don't have to edit the templates as much
+- Should write some more documentation
