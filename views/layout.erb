@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>S5 meets Sinatra</title>
+    <meta content='S5 1.0' name='version' />
+    <link href='slides.css' id='slideProj' media='projection' rel='stylesheet' type='text/css' />
+    <link href='ui/outline.css' id='outlineStyle' media='screen' rel='stylesheet' type='text/css' />
+    <link href='ui/opera.css' id='operaFix' media='projection' rel='stylesheet' type='text/css' />
+    <link href='ui/print.css' id='slidePrint' media='print' rel='stylesheet' type='text/css' />
+    <style media='all' type='text/css'>
+      .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+      #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+      #anim img {position: absolute; top: 42px; left: 24px;}
+      img#me01 {top: 0; left: 0;}
+      img#me02 {left: 23px;}
+      img#me04 {top: 44px;}
+      img#me05 {top: 43px;left: 36px;}
+    </style>
+    <script src='/slides.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div class='layout'>
+      <div id='controls'></div>
+      <div id='currentSlide'></div>
+      <div id='header'></div>
+      <div id='footer'>
+        <h1>
+          S5 meets Sinatra
+        </h1>
+        <h2>
+          Some "footer" text &#8226;
+          2009-03-12
+        </h2>
+      </div>
+    </div>
+    <div class='presentation'>
+      <%= yield %>
+    </div>
+    <style media='all' type='text/css'>
+      .gist .gist-file .gist-data {font-size: 80%}
+      .gist .gist-file .gist-meta {font-size: 50%}
+    </style>
+  </body>
+</html>

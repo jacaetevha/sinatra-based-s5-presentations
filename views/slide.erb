@@ -1,0 +1,9 @@
+<div class='slide'>
+  <h1><%= slide.title %></h1>
+  <ul>
+    <% slide.points.each do |point| %>
+    <li><%= point %></li>
+    <% end %>
+  </ul>
+  <div class='handout'><%= slide.handout_material %></div>
+</div>

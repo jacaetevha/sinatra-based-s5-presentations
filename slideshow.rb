@@ -6,7 +6,12 @@ set :logging, true
 set :app_file, __FILE__
 
 configure(:development) do
-  set :slides, 'lib/slides'
+  if ENV['sinbasp_engine'] == 'erb'
+    Slide.engine = :erb 
+    set :slides, 'lib/erb_slides'
+  else
+    set :slides, 'lib/slides'
+  end
 end
 
 helpers do
@@ -25,22 +30,17 @@ helpers do
     options.merge!(:layout => false)
     if collection = options.delete(:collection) then
       collection.inject([]) do |buffer, member|
-        buffer << haml(template, options.merge(:layout => false, :locals => {template.to_sym => member}))
+        puts "\n\n#{template.inspect}\n\n"
+        puts "\n\n#{args.inspect}\n\n"
+        puts "\n\n#{collection.inspect}\n\n"
+        buffer << self.send(Slide.engine, template, options.merge(:layout => false, :locals => {template.to_sym => member}))
         # buffer << haml(template, options.merge(:layout => false, template.to_sym => member))
       end.join("\n")
     else
-      haml(template, options)
+      self.send(Slide.engine, template, options)
     end
   end
   
-  def haml_escape(text)
-    if text[0].chr == '.' || text[0].chr == '#'
-      '\\' + text
-    else
-      text
-    end
-  end
-
 end
 
 def gist(id)
@@ -54,13 +54,8 @@ get '/' do
     Slide.new(:title => $!.message, :points => ['advance slide for stacktrace'])
     Slide.new(:title => 'stacktrace', :points => $@)
   end
-  @slides = Slide.all.each do |slide|
-    slide.title = haml(haml_escape(slide.title), :layout => false)
-    slide.points = slide.points.collect do |point|
-      haml(haml_escape(point), :layout => false)
-    end
-  end
-  haml :slides
+  @slides = Slide.all
+  self.send Slide.engine, :slides
 end
 
 %w{framing opera outline pretty print s5-core slides}.each do |style|

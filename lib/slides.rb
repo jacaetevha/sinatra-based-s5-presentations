@@ -8,7 +8,7 @@ Slide.new(:title => %q{
 Slide.new(:title => 'Points', :points => "Points can be plain text")
 
 Slide.new(:title => 'Points can be a list of plain text', :points => [
-  'Sweet', 'Simple', '... and to the Point'
+  'Sweet', 'Simple', '\\... and to the Point'
 ])
 
 Slide.new(:title => 'Points can be HAML', :points => %q{
