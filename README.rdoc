@@ -20,3 +20,5 @@ In BASH, you can run this command to start up the script and set it to run with 
 == To Do
 - Make styles more easily configurable so that the we don't have to edit the templates as much
 - Should write some more documentation
+- Do we still need #base_url? It's not accessible to the Slides, only to the templates.
+- Is there some way to define the #gist message without putting it in the main Object scope? Does it matter?
